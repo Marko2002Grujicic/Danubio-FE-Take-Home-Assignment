@@ -24,8 +24,8 @@ const FilterButton = ({item, selectedValue, setSelectedValue, action, setPageNum
     onClick={()=> {onClickHandler()}} 
     />} 
     label= {
+    
     <Button 
-      className={selectedValue} 
       variant={selectedValue === item ? 'contained' : 'outlined'}>
       {item}
     </Button>

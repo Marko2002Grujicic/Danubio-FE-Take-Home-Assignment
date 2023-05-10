@@ -26,25 +26,21 @@ const CharacterPage = () => {
   return (
     <Stack 
     alignItems='center'  
-    pb='40px' 
-    sx={{
-      height: {
-        lg: '130vh',
-        md: '105vh',
-        xs: '85vh'
-      }
-    }}>
+    pb='50px'
+    pt='55px'
+    >
       <Box sx={{
         width: {
           lg: '800px',
           md: '600px',
           xs: '350px'
         },
+        height: '100%',
         border: '2px solid black',
         borderRadius: '10px',
-        mt: '50px',
         bgcolor: '#B9B9B9',
-        padding: '10px'
+        padding: '10px',
+        overflow: 'auto'
         }}>
         
         <Box id='image' 

@@ -48,18 +48,20 @@ const Filters = ({setStatus, setPageNumber, setGender, setSpecies, setSearch, se
         setSearchQuery('')
       }
   return (
+    
     <Box 
     sx={{
         border: '2px solid black',
         borderRadius: '10px',
         marginTop: {lg: '10px', xs: '15px'},
-        color: '#117FEE'
+        color: '#117FEE',
+        width: {lg:'610px', md:'410px', xs: '310px'},
     }}>
         <Stack alignItems='flex-start'>
             <Typography variant='h4' pl={1}>
                 Filters
             </Typography>
-            <Box sx={{width: {lg:'800px', md:'400px', xs: '300px'}}}>
+            <Box sx={{width: {lg:'600px', md:'400px', xs: '300px'}}}>
                 {objects.map((object,index) => (
                     <AccordionComponent 
                     expanded={expanded}

@@ -21,18 +21,21 @@ const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setS
         <AccordionDetails>
           <FormControl>
           <RadioGroup
-          name="radio-buttons-group">
+          name="radio-buttons-group"
+          >
             <Stack direction='row' 
             flexWrap='wrap' 
-            gap='10px'>
+            gap='10px'
+            >
             {array.map((item, index) => (
-                
+                <>
                 <FilterButton item={item} key={index}
                 selectedValue={selectedValue}
                 setSelectedValue={setSelectedValue}
                 action={action}
                 setPageNumber={setPageNumber}
                 />
+                </>
               ))}
             </Stack>
             </RadioGroup>

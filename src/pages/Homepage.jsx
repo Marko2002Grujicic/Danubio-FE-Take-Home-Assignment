@@ -4,6 +4,7 @@ import SearchCharacters from '../components/Search/SearchCharacters'
 import Characters from '../components/Characters/Characters';
 
 
+
 const Homepage = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [search, setSearch] = useState('')
@@ -22,11 +23,15 @@ const Homepage = () => {
         setGender={setGender}
         setSpecies={setSpecies}
         />
-        <Characters search={search} pageNumber={pageNumber} setPageNumber={setPageNumber}
-        status={status}
-        gender={gender}
-        species={species}
-        />
+          <Characters search={search} 
+            pageNumber={pageNumber} 
+            setPageNumber={setPageNumber}
+            status={status}
+            gender={gender}
+            species={species}
+            />
+       
+      
     </Box>
   )
 }

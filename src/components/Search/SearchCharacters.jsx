@@ -1,6 +1,6 @@
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import React from 'react'
-import Filters from '../Filters/Filters'
+import Filters from '../Filters/Filters';
 
 const SearchCharacters = ({searchQuery, setSearchQuery, setSearch, setPageNumber, setStatus, setGender, setSpecies}) => {
 
@@ -58,12 +58,13 @@ const SearchCharacters = ({searchQuery, setSearchQuery, setSearch, setPageNumber
             </Button>
         </Box>
         <Filters 
-        setStatus={setStatus} 
-        setGender={setGender} 
-        setSpecies={setSpecies}
-        setSearch={setSearch}
-        setSearchQuery={setSearchQuery}
-        setPageNumber={setPageNumber}/>
+              setStatus={setStatus} 
+              setGender={setGender} 
+              setSpecies={setSpecies}
+              setSearch={setSearch}
+              setSearchQuery={setSearchQuery}
+              setPageNumber={setPageNumber}
+              />
     </Stack>
   )
 }
