@@ -26,6 +26,7 @@ const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setS
             flexWrap='wrap' 
             gap='10px'>
             {array.map((item, index) => (
+                
                 <FilterButton item={item} key={index}
                 selectedValue={selectedValue}
                 setSelectedValue={setSelectedValue}

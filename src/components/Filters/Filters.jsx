@@ -2,7 +2,7 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import AccordionComponent from './AccordionComponent';
 
-const Filters = ({setStatus, setPageNumber, setGender, setSpecies}) => {
+const Filters = ({setStatus, setPageNumber, setGender, setSpecies, setSearch, setSearchQuery}) => {
     const [expanded, setExpanded] = useState(false);
     const [selectedValue, setSelectedValue] =useState('');
     const handleChange = (name) => (event, isExpanded) => {
@@ -44,20 +44,22 @@ const Filters = ({setStatus, setPageNumber, setGender, setSpecies}) => {
         setPageNumber(1)
         setSelectedValue('')
         setExpanded(false)
+        setSearch('')
+        setSearchQuery('')
       }
   return (
     <Box 
     sx={{
         border: '2px solid black',
         borderRadius: '10px',
-        marginTop: {lg: '10px', s: '10px'},
+        marginTop: {lg: '10px', xs: '15px'},
         color: '#117FEE'
     }}>
         <Stack alignItems='flex-start'>
             <Typography variant='h4' pl={1}>
                 Filters
             </Typography>
-            <Box sx={{width: {lg:'800px', xs: '300px'}}}>
+            <Box sx={{width: {lg:'800px', md:'400px', xs: '300px'}}}>
                 {objects.map((object,index) => (
                     <AccordionComponent 
                     expanded={expanded}

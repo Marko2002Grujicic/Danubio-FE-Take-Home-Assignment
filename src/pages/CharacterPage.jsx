@@ -1,7 +1,8 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
+import StatusButton from '../components/StatusButton'
 
 const CharacterPage = () => {
   const {id} = useParams()
@@ -23,44 +24,65 @@ const CharacterPage = () => {
   const formattedDate = date.toLocaleDateString('en-GB');
 
   return (
-    <Stack alignItems='center' mt={0}>
-      <Box width='600px'>
+    <Stack 
+    alignItems='center'  
+    pb='40px' 
+    sx={{
+      height: {
+        lg: '130vh',
+        md: '105vh',
+        xs: '85vh'
+      }
+    }}>
+      <Box sx={{
+        width: {
+          lg: '800px',
+          md: '600px',
+          xs: '350px'
+        },
+        border: '2px solid black',
+        borderRadius: '10px',
+        mt: '50px',
+        bgcolor: '#B9B9B9',
+        padding: '10px'
+        }}>
+        
+        <Box id='image' 
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+        }}>
+          <img src={image} alt={name} style={{
+            width: '80%', borderRadius: '50%',
+            }}/>
+        </Box>
         <Box id='title'>
-          <Typography variant='h2' textAlign='center' fontWeight='400'>
+          <Typography variant='h3' textAlign='center' fontWeight='400'>
             {name}
           </Typography>
         </Box>
-        <Box id='image'>
-          <img src={image} alt={name} style={{width: '600px'}}/>
-        </Box>
-        <Box id='character-details'>
-          <Button color='success' variant='outlined'
-            sx={{
-                backgroundColor: status === 'Alive' ? 'green' : status === 'Dead' ? '#9A1700' : 'gray',
-                color: 'white',
-                width: '100%',
-                textTransform: 'capitalize',
-                fontSize: '24px'
-            }}>
-            {status}
-          </Button>
-          <Typography>
+        <Box id='character-details' pt='10px'>
+          <StatusButton status={status} position={'static'} id={'characterPage'}/>
+          <br/>
+          <Typography textTransform='capitalize' border='2px solid black' padding='10px' borderRadius='10px' sx={{
+            fontSize:{
+              lg: '25px',
+              xs: '20px'
+            }
+          }}>
             <b>Gender:</b> {gender}
-            </Typography>
-          <Typography textTransform='capitalize'>
+            <br/>
             <b>Location:</b> {location.name}
-            </Typography>
-          <Typography>
+            <br/>
             <b>Origin:</b> {origin.name}
-            </Typography>
-          <Typography>
+            <br/>
             <b>Species:</b> {species}
-            </Typography>
-            <Typography>
-              <b>Appearing in:</b> {episode.length} episodes
-            </Typography>
-            <Typography>
-              <b>Created on:</b> {formattedDate}
+            <br/>
+            <b>Appearing in:</b> {episode.length} episodes
+            <br/>
+            <b>Created on:</b> {formattedDate}
             </Typography>
         </Box>
         </Box>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import CharacterCard from './CharacterCard'
 import PaginationComponent from '../Pagination'
 import Loader from '../Loader/Loader'
+import NotFound from '../NotFound/NotFound'
 
 const Characters = ({search, pageNumber, setPageNumber, status, gender, species}) => {
     const [fetchedData, setFetchedData] = useState([])
@@ -16,8 +17,7 @@ const Characters = ({search, pageNumber, setPageNumber, status, gender, species}
             setFetchedData(data);
         })
     }, [api]);
-
-    if(!results) return <Loader/>
+    if (!results) return <NotFound/>
   return (
     <Box p='20px'>
         <Stack direction='row' 

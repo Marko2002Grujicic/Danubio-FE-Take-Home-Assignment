@@ -11,7 +11,7 @@ const SearchCharacters = ({searchQuery, setSearchQuery, setSearch, setPageNumber
         mt='37px'
         justifyContent='center'
         p='20px'
-    >
+        >
         <Typography variant='h2' textAlign='center'>
         Characters
         </Typography>
@@ -26,7 +26,7 @@ const SearchCharacters = ({searchQuery, setSearchQuery, setSearch, setPageNumber
                 input: {
                     fontWeight: '700',
                 }, 
-                width: {lg: '1170px', md:'500px', xs: '350px'},
+                width: {lg: '1170px', md:'600px', xs: '350px'},
                 backgroundColor: '#fff',
             }}/>
             <Button 
@@ -61,6 +61,8 @@ const SearchCharacters = ({searchQuery, setSearchQuery, setSearch, setPageNumber
         setStatus={setStatus} 
         setGender={setGender} 
         setSpecies={setSpecies}
+        setSearch={setSearch}
+        setSearchQuery={setSearchQuery}
         setPageNumber={setPageNumber}/>
     </Stack>
   )

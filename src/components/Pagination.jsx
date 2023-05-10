@@ -4,7 +4,7 @@ import React from 'react'
 const PaginationComponent = ({info, setPageNumber, pageNumber}) => {
     const handlePageChange  = (e, value) => {
         setPageNumber(value)
-        window.scrollTo({top: 100, behavior: 'smooth'})
+        window.scrollTo({top: 200, behavior: 'smooth'})
     }
 
   return (

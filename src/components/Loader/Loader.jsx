@@ -1,16 +1,11 @@
 import React from 'react'
-import './Loader.css'
+import { Box, CircularProgress } from '@mui/material'
 
 const Loader = () => {
   return (
-    <div class="sk-chase">
-  <div class="sk-chase-dot"></div>
-  <div class="sk-chase-dot"></div>
-  <div class="sk-chase-dot"></div>
-  <div class="sk-chase-dot"></div>
-  <div class="sk-chase-dot"></div>
-  <div class="sk-chase-dot"></div>
-</div>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '20px' }}>
+    <CircularProgress />
+  </Box>
   )
 }
 
