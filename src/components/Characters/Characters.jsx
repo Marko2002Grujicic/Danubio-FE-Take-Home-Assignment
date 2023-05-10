@@ -2,7 +2,6 @@ import { Box, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import CharacterCard from './CharacterCard'
 import PaginationComponent from '../Pagination'
-import Loader from '../Loader/Loader'
 import NotFound from '../NotFound/NotFound'
 
 const Characters = ({search, pageNumber, setPageNumber, status, gender, species}) => {
