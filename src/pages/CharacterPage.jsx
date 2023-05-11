@@ -7,18 +7,13 @@ import StatusButton from '../components/StatusButton'
 const CharacterPage = () => {
   const {id} = useParams()
   const [singleCharacter, setSingleCharacter] = useState(null);
-  const [storedId] = useState(() => localStorage.getItem("storedId") || id)
   useEffect(() => {
-    localStorage.setItem('storedId', storedId)
-    fetch(`https://rickandmortyapi.com/api/character/${storedId}`)
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
     .then(res => res.json())
     .then(data => {
       setSingleCharacter(data)
-    });
-    return () => {
-      localStorage.removeItem("storedId");
-    };
-  },[storedId]);
+    })
+  },[id]);
   
   if (singleCharacter === null) return <Loader/>;
 
@@ -36,15 +31,17 @@ const CharacterPage = () => {
     >
       <Box sx={{
         width: {
-          lg: '800px',
-          md: '600px',
+          lg: '500px',
+          sm: '400px',
           xs: '350px'
         },
+        
         border: '2px solid black',
         borderRadius: '10px',
         bgcolor: '#B9B9B9',
         padding: '10px',
-        overflow: 'auto'
+        overflow: 'auto',
+        boxShadow: '0px 10px 20px 0px rgba(0, 0, 0, 0.5)'
         }}>
         
         <Box id='image' 
