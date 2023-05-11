@@ -28,6 +28,7 @@ const CharacterPage = () => {
     alignItems='center'  
     pb='50px'
     pt='55px'
+    minHeight='100vh'
     >
       <Box sx={{
         width: {
@@ -35,7 +36,6 @@ const CharacterPage = () => {
           md: '600px',
           xs: '350px'
         },
-        height: '100%',
         border: '2px solid black',
         borderRadius: '10px',
         bgcolor: '#B9B9B9',

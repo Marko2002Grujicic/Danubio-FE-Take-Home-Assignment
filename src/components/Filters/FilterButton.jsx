@@ -1,33 +1,34 @@
 import { Button, FormControlLabel, Radio } from '@mui/material'
 import React from 'react'
 
-const FilterButton = ({item, selectedValue, setSelectedValue, action, setPageNumber}) => {  
+const FilterButton = ({value, label,selectedValue, setSelectedValue, action, setPageNumber}) => {  
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+  const handleChange = () => {
+    setSelectedValue(value)
   };
+
   const controlProps = (item) => ({
-    checked: selectedValue === item,
+    checked: selectedValue === value,
     onChange: handleChange,
     value: item,
     name: "size-radio-button-demo",
-    inputProps: { "aria-label": item },
+    inputProps: { "aria-label": label },
   });
   const onClickHandler = () => {
-    action(item)
+    action(label)
     setPageNumber(1)
   }
   return (
     
-    <FormControlLabel id={item} value={item} 
-    control={<Radio {...controlProps(`${item}`)}
+    <FormControlLabel id={value} value={value} 
+    control={<Radio {...controlProps(`${value}`)}
     onClick={()=> {onClickHandler()}} 
     />} 
     label= {
     
     <Button 
-      variant={selectedValue === item ? 'contained' : 'outlined'}>
-      {item}
+      variant={selectedValue === value ? 'contained' : 'outlined'}>
+      {label}
     </Button>
 }/>
   )

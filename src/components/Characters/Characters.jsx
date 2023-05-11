@@ -19,7 +19,8 @@ const Characters = ({search, pageNumber, setPageNumber, status, gender, species}
     if (!results) return <NotFound/>
   return (
     <Box p='20px'>
-        <Stack direction='row' 
+        <Stack direction='row'
+        minHeight='100vh'
         gap= {{lg: '107px', xs: '50px'}}
         flexWrap='wrap'
         justifyContent='center'

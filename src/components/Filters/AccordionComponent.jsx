@@ -5,7 +5,8 @@ import FilterButton from './FilterButton';
 
 const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setSelectedValue, selectedValue}) => {
   const {name, array, action} = object;
-    
+
+
   return (
     <Accordion  
     expanded={expanded === `${name}`} 
@@ -28,14 +29,15 @@ const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setS
             gap='10px'
             >
             {array.map((item, index) => (
-                <>
-                <FilterButton item={item} key={index}
-                selectedValue={selectedValue}
-                setSelectedValue={setSelectedValue}
+                <FilterButton 
+                value={item.value} key={index}
+                label={item.label}
                 action={action}
                 setPageNumber={setPageNumber}
+                setSelectedValue={setSelectedValue}
+                selectedValue={selectedValue}
                 />
-                </>
+    
               ))}
             </Stack>
             </RadioGroup>
