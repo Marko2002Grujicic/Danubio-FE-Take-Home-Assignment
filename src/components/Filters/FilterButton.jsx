@@ -1,33 +1,43 @@
 import { Button, FormControlLabel, Radio } from '@mui/material'
 import React from 'react'
 
-const FilterButton = ({value, label,selectedValue, setSelectedValue, action, setPageNumber}) => {  
+const FilterButton = ({value, label,action, setPageNumber, setAppliedFilters,appliedFilters }) => {  
 
-  const handleChange = () => {
-    setSelectedValue(value)
-  };
+  const isChecked = appliedFilters.includes(value);
 
-  const controlProps = (item) => ({
-    checked: selectedValue === value,
-    onChange: handleChange,
-    value: item,
-    name: "size-radio-button-demo",
-    inputProps: { "aria-label": label },
-  });
-  const onClickHandler = () => {
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+        /* checks If the new value is a status/gender/species filter, filters out any other status/gender/species filters, and then applies those filters in the end.*/
+    if (newValue.includes("status-")) {
+      const statusCheckedValues = appliedFilters.filter((value) => !value.includes("status-"));
+      setAppliedFilters([...statusCheckedValues, newValue]);
+    }else if (newValue.includes('gender-')) {
+      const genderCheckedValues = appliedFilters.filter((value) => !value.includes("gender-"));
+      setAppliedFilters([...genderCheckedValues, newValue]);
+    }else if (newValue.includes('species-')){
+      const speciesCheckedValues = appliedFilters.filter((value) => !value.includes("species-"));
+      setAppliedFilters([...speciesCheckedValues, newValue]);
+    }
+     else {
+      const newAppliedFilters = isChecked ? (appliedFilters.filter((value) => value !== newValue)) : ([...appliedFilters, newValue]);
+      setAppliedFilters(newAppliedFilters);
+    }
     action(label)
     setPageNumber(1)
-  }
+  };
+    
+
   return (
     
     <FormControlLabel id={value} value={value} 
-    control={<Radio {...controlProps(`${value}`)}
-    onClick={()=> {onClickHandler()}} 
+    control={<Radio
+    checked={isChecked}
+    onChange={handleChange}
     />} 
     label= {
     
     <Button 
-      variant={selectedValue === value ? 'contained' : 'outlined'}>
+      variant={isChecked ? 'contained' : 'outlined'}>
       {label}
     </Button>
 }/>

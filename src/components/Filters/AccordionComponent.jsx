@@ -1,16 +1,14 @@
 import React from 'react'
-import { AccordionSummary, AccordionDetails, Stack, Typography, Accordion, RadioGroup, FormControl  } from '@mui/material';
+import { Accordion,AccordionSummary, AccordionDetails, Stack, Typography, RadioGroup, FormControl  } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterButton from './FilterButton';
 
-const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setSelectedValue, selectedValue}) => {
+const AccordionComponent = ({object, expanded, handleExpand, setPageNumber, setAppliedFilters, appliedFilters}) => {
   const {name, array, action} = object;
-
-
   return (
     <Accordion  
-    expanded={expanded === `${name}`} 
-    onChange={handleChange(name)}>
+    expanded={expanded.includes(name)} 
+    onChange={()=> handleExpand(name)}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
@@ -34,8 +32,8 @@ const AccordionComponent = ({object, expanded, handleChange, setPageNumber, setS
                 label={item.label}
                 action={action}
                 setPageNumber={setPageNumber}
-                setSelectedValue={setSelectedValue}
-                selectedValue={selectedValue}
+                appliedFilters={appliedFilters}
+                setAppliedFilters={setAppliedFilters}
                 />
     
               ))}

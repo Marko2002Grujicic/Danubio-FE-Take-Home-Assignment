@@ -7,15 +7,19 @@ import StatusButton from '../components/StatusButton'
 const CharacterPage = () => {
   const {id} = useParams()
   const [singleCharacter, setSingleCharacter] = useState(null);
-
+  const [storedId] = useState(() => localStorage.getItem("storedId") || id)
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    localStorage.setItem('storedId', storedId)
+    fetch(`https://rickandmortyapi.com/api/character/${storedId}`)
     .then(res => res.json())
     .then(data => {
       setSingleCharacter(data)
-    })
-  },[id]);
-
+    });
+    return () => {
+      localStorage.removeItem("storedId");
+    };
+  },[storedId]);
+  
   if (singleCharacter === null) return <Loader/>;
 
   const {name, image, status, gender, location, origin, species, episode, created} = singleCharacter;

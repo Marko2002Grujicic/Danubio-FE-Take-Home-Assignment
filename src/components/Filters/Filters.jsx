@@ -3,13 +3,22 @@ import React, { useState } from 'react'
 import AccordionComponent from './AccordionComponent';
 
 const Filters = ({setStatus, setPageNumber, setGender, setSpecies, setSearch, setSearchQuery}) => {
-    const [expanded, setExpanded] = useState(false);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [expanded, setExpanded] = useState([]);
+    const [appliedFilters, setAppliedFilters] = useState([])
 
-    const handleChange = (name) => (event, isExpanded) => {
-        setExpanded(isExpanded ? name : false);
+    const handleExpand = (name) => {
+        if (expanded.includes(name)) {
+            setExpanded(expanded.filter((item) => item !== name));
+          } else {
+            setExpanded([...expanded, name]);
+          }
+        // if (expanded === name) {
+        //     setExpanded(false);
+        //   } else {
+        //     setExpanded(name);
+        //   }
       };
-    
+
       const filterObjects = [
             {
                name: 'Status',
@@ -93,13 +102,13 @@ const Filters = ({setStatus, setPageNumber, setGender, setSpecies, setSearch, se
         setSpecies('')
         setGender('')
         setPageNumber(1)
-        setExpanded(false)
+        setExpanded([])
         setSearch('')
         setSearchQuery('')
-        setSelectedValue('');
+        setAppliedFilters([])
       }
+
   return (
-    
     <Box 
     sx={{
         border: '2px solid black',
@@ -118,10 +127,10 @@ const Filters = ({setStatus, setPageNumber, setGender, setSpecies, setSearch, se
                     expanded={expanded}
                     object={object}
                     key={index}
-                    handleChange={handleChange}
+                    handleExpand={handleExpand}
                     setPageNumber={setPageNumber}
-                    setSelectedValue={setSelectedValue}
-                    selectedValue={selectedValue}
+                    setAppliedFilters={setAppliedFilters}
+                    appliedFilters={appliedFilters}
                     />
                 ))}
             </Box>
